@@ -1,10 +1,12 @@
 import React, {useState} from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, useNavigate } from "react-router-dom";
 import {useHistory} from "react-router-dom";
 
 export const Login = (props) => {
     const [email, setEmail] = useState('');
     const [pass, setPass] = useState('');
+    const navigate = useNavigate();
+    const location = useLocation();
 
     const handleSubmit = (e) => {
         e.preventDefault();
