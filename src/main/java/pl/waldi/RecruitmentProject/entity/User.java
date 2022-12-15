@@ -4,6 +4,9 @@ import lombok.*;
 
 import javax.persistence.*;
 
+/**
+ * This class is for defining user by his id, name, password and email adress
+ */
 @Getter
 @Setter
 @NoArgsConstructor

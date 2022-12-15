@@ -14,6 +14,9 @@ import pl.waldi.RecruitmentProject.registration.token.ConfirmationTokenService;
 
 import java.time.LocalDateTime;
 
+/**
+ * This class is for registration service which allows users to register
+ */
 @Service
 @AllArgsConstructor
 public class RegistrationService {
@@ -22,6 +25,13 @@ public class RegistrationService {
     private final EmailValidator emailValidator;
     private final ConfirmationTokenService confirmationTokenService;
     private final EmailSender emailSender;
+
+    /**
+     * This Method is for sign up new users
+     * @param request the necessary information which user must provide
+     *                such as first name, last name, email and password
+     * @return returning token if email is vaild
+     */
     @SneakyThrows
     public String register(RegistrationRequest request) {
         boolean isValidEmail = emailValidator.
@@ -46,6 +56,12 @@ public class RegistrationService {
                 buildEmail(request.getFirstName(), link));
         return token;
     }
+
+    /**
+     * This method is for token handling visible for users, response when valid, not valid or expired
+     * @param token is what user get after signing up
+     * @return message of result of the process
+     */
     @Transactional
     public String confirmToken(String token) {
         ConfirmationToken confirmationToken = confirmationTokenService
@@ -65,6 +81,12 @@ public class RegistrationService {
         return "YAY! Confirmed!";
 
     }
+
+    /**
+     * Method that creates an email message for users which sign up i registration sheet to their signed email
+     * @param name name of the user
+     * @param link link to confirmation of received email
+     */
     private String buildEmail(String name, String link) {
         return "<div style=\"font-family:Helvetica,Arial,sans-serif;font-size:16px;margin:0;color:#0b0c0c\">\n" +
                 "\n" +

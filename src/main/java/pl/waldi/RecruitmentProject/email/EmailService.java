@@ -11,6 +11,10 @@ import org.springframework.stereotype.Service;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+/**
+ * This class is for handling email service so user can confirm an email which
+ * was send after registration process
+ */
 @Service
 @AllArgsConstructor
 public class EmailService implements EmailSender{
@@ -19,6 +23,12 @@ public class EmailService implements EmailSender{
     private final static Logger LOGGER = LoggerFactory.getLogger(EmailService.class);
     private final JavaMailSender mailSender;
 
+    /**
+     * This method is for sending a mime message to user
+     * @param to user
+     * @param email users email adress
+     * User gets an email with confirmation, if email is incorrect, there is exception
+     */
     @Override
     @Async
     public void send(String to, String email) {
@@ -29,8 +39,9 @@ public class EmailService implements EmailSender{
             helper.setText(email, true);
             helper.setTo(to);
             helper.setSubject("Confirm your email");
-            helper.setFrom("hello@imcodinglol.com");
+            helper.setFrom("hello@somegmejl.com");
             mailSender.send(mimeMessage);
+
 
         } catch (MessagingException e) {
             LOGGER.error("failed to send email :(", e);

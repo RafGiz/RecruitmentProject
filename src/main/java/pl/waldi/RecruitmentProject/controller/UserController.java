@@ -11,10 +11,19 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
+/**
+ * This class is for controlling base of users
+ */
 
 public class UserController {
 
+
     private final UserService userService;
+
+    /**
+     * Method allows to list all the users
+     * @return the total amount of users
+     */
 
     @GetMapping("/users")
     ResponseEntity<List<User>> getAllUsers()

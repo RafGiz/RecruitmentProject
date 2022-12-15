@@ -7,7 +7,19 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
+/**
+ * This class is for data import
+ */
+
+
 public class DataImporter {
+    /**
+     * Method DataImporter is connectiong with database on certain url adress
+     * @throws IOException signalizing problems with input/output system so when problem with files
+     * or data transmission accures
+     * @throws SQLException signalizing problems with database, open when importancy level is 10 or less, when
+     * importancy level is 17 to 25 there is an errors with software or dev environment
+     */
     public static void main(String[] args) throws IOException, SQLException {
 
         String jdbcURL = "jdbc:mysql://localhost:3306/recruitmentproject";

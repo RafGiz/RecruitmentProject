@@ -8,6 +8,9 @@ import pl.waldi.RecruitmentProject.appuser.AppUser;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
+/**
+ * This class is for storing the confirmation token in the database, generating and handling them to users
+ */
 @Getter
 @Setter
 @NoArgsConstructor
@@ -40,6 +43,13 @@ public class ConfirmationToken {
     )
     private AppUser appUser;
 
+    /**
+     * This method provide validation of user which was subscribed to token
+     * @param token user confirmation token
+     * @param createdAt time which token is created
+     * @param expiredAt time which token will expire
+     * @param appUser user
+     */
     public ConfirmationToken(String token,
                              LocalDateTime createdAt,
                              LocalDateTime expiredAt,

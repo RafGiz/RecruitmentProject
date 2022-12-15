@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 import java.time.LocalDateTime;
 import java.util.Optional;
 
+/**
+ * This interface is for finding token
+ */
 @Repository
 public interface ConfirmationTokenRepository
         extends JpaRepository<ConfirmationToken, Long> {

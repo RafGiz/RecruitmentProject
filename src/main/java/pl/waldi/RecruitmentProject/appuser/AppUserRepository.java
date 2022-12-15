@@ -9,7 +9,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Optional;
 
-
+/**
+ * This interface if for a query againts the database
+ *
+ */
 @Repository
 @Transactional(readOnly = true)
 public interface AppUserRepository extends JpaRepository<AppUser, Long> {

@@ -15,11 +15,19 @@ import pl.waldi.RecruitmentProject.appuser.AppUserService;
 @Configuration
 @AllArgsConstructor
 @EnableWebSecurity
+/**
+ * This class is for security measures that is necessary in password and account handling
+ */
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AppUserService appUserService;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
+    /**
+     * This method is configuring http security path
+     * @param http details of path of authorization
+     * @throws Exception
+     */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
@@ -32,10 +40,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin();
     }
 
+    /**
+     * This method is for configuration of authentication process
+     * @param auth provide an authentication
+     * @throws Exception
+     */
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(daoAuthenticationProvider());
     }
+
+    /**
+     * This method is for encoding the users password
+     * @return returning configurated provider for each of users
+     */
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         DaoAuthenticationProvider provider =

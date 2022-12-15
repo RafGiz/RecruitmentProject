@@ -5,6 +5,9 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.ToString;
 
+/**
+ * This class is for capture the users details for registration
+ */
 @Getter
 @AllArgsConstructor
 @EqualsAndHashCode

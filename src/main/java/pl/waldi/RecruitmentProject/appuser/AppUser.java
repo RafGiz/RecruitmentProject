@@ -12,6 +12,9 @@ import javax.persistence.*;
 import java.util.Collection;
 import java.util.Collections;
 
+/**
+ * This class is for defining properties for users
+ */
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -40,6 +43,15 @@ public class AppUser implements UserDetails {
     private Boolean locked = false;
     private Boolean enabled = false;
 
+    /**
+     * This method is for user describing, handling the registration or role purposes
+     * @param firstName users first name
+     * @param lastName users last name
+     * @param email users email
+     * @param password users password
+     * @param appUserRole users role in application
+     */
+
     public AppUser(String firstName,
                    String lastName,
                    String email,
@@ -54,6 +66,11 @@ public class AppUser implements UserDetails {
 
 
     }
+
+    /**
+     * This method is for assigning user for role, which have acces to secure endpoints
+     * @return granting the authority for user with described role
+     */
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
