@@ -31,6 +31,7 @@ public class AppUser implements UserDetails {
     )
     private Long id;
     private String firstName;
+
     private String lastName;
     private String email;
     private String password;
@@ -51,6 +52,7 @@ public class AppUser implements UserDetails {
         this.password = password;
         this.appUserRole = appUserRole;
 
+
     }
 
     @Override
@@ -59,6 +61,7 @@ public class AppUser implements UserDetails {
         SimpleGrantedAuthority authority =
                 new SimpleGrantedAuthority(appUserRole.name());
         return Collections.singletonList(authority);
+
     }
 
     @Override
