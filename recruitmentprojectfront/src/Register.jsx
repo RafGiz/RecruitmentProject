@@ -9,6 +9,16 @@ export const Register = (props) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log(email);
+        fetch('http://localhost:8080/api/v1/registration/register', {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ "firstName": firstName, "lastName": lastName, "email": email, "password": pass })
+})
+.then(response => response.json())
+.then(response => console.log(JSON.stringify(response)))
     }
 
     return (
@@ -23,7 +33,7 @@ export const Register = (props) => {
                 <input value={email} onChange={(e) => setEmail(e.target.value)}type="email"placeholder="youremail@gmail.com" id="email" name="email"/>
                 <label htmlFor="password">password</label>
                 <input value={pass} onChange={(e) => setPass(e.target.value)}type="password"placeholder="********" id="password" name="password"/>
-                <button typer="submit">Log In</button>
+                <button typer="submit">Register</button>
             </form>
             <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
         </div>
